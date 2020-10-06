@@ -3,7 +3,7 @@ import StepContext from '../../StepContext'
 import { Text, Wrapper, Button, Emoji } from '../StyledComponents'
 import { Form, Input, Label } from './index.styled'
 
-const nameRegex = /[a-zA-Z\s-]+/g
+const nameRegex = /^[a-zA-Z\s-]+$/g
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/g
 
 export default () => {
