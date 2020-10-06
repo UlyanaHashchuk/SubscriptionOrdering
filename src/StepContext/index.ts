@@ -18,8 +18,6 @@ type ContextProps = {
   setStep: React.Dispatch<React.SetStateAction<number>>
   subscriptionData: Subscription
   setSubscriptionData: React.Dispatch<React.SetStateAction<Object>>
-  // prevPrice: number
-  // setPrevPrice: React.Dispatch<React.SetStateAction<number>>
   formData: Form
   setFormData: React.Dispatch<React.SetStateAction<Object>>
 }
