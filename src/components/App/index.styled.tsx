@@ -10,7 +10,7 @@ export default createGlobalStyle`
     background-color: #202329;
     color: white;
 
-    & > #root {
+    & > * {
       height: 100%;
     }
   }

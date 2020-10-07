@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
-import StepContext from '../../../StepContext'
+import StepContext from '../../../contexts/StepContext'
+import { OrderSteps } from '../../../constants/orderSteps'
 import { Wrapper, Text, Button, Emoji } from '../../StyledComponents'
 import { BoxWrapper, Box, List } from './index.styled'
 
@@ -25,7 +26,7 @@ export default () => {
   const { setStep, setSubscriptionData } = useContext(StepContext)
 
   const handleClick = ({ type, price }) => {
-    setStep(1)
+    setStep(OrderSteps.subscriptionDurationSelect)
     setSubscriptionData({
       type,
       price,
@@ -38,14 +39,14 @@ export default () => {
         Step 1: Please select subscription type
       </Text>
       <BoxWrapper>
-        {subscriptionTypes.map(({ type, features, price }, index) => (
-          <Box key={index}>
+        {subscriptionTypes.map(({ type, features, price }) => (
+          <Box key={type}>
             <Text centered header underlined>
               {type}
             </Text>
             <List>
-              {features.map((item, index) => (
-                <Text key={index}>
+              {features.map((item) => (
+                <Text key={item}>
                   <Emoji symbol="✔️" label="check" /> {item}
                 </Text>
               ))}

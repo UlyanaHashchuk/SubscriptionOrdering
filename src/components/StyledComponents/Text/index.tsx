@@ -1,13 +1,13 @@
 import styled, { css } from 'styled-components'
 
-type Props = {
-  centered?: boolean
-  right?: boolean
-  header?: boolean
-  small?: boolean
-  underlined?: boolean
-  crossed?: boolean
-}
+type Props = Partial<{
+  centered: boolean
+  right: boolean
+  header: boolean
+  small: boolean
+  underlined: boolean
+  crossed: boolean
+}>
 
 const Text = styled.div<Props>`
   font-weight: 400;

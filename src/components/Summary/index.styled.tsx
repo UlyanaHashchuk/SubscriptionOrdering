@@ -13,7 +13,7 @@ const SummaryBox = styled(Box)`
     width: 280px;
   }
 
-  & > ${Text} > ${Text} {
+  ${Text} > ${Text} {
     padding-bottom: 5px;
   }
 `

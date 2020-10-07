@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
-import StepContext from '../../StepContext'
+import StepContext from '../../contexts/StepContext'
+import { OrderSteps } from '../../constants/orderSteps'
 import { Text, Button, Emoji } from '../StyledComponents'
 import { Box, Component, Container } from './index.styled'
 
@@ -15,7 +16,9 @@ export default () => {
           </Text>
           <Text small>Lets the shopping begin</Text>
         </Container>
-        <Button onClick={() => setStep(0)}>Lets start</Button>
+        <Button onClick={() => setStep(OrderSteps.subscriptionTypeSelect)}>
+          Lets start
+        </Button>
       </Box>
     </Component>
   )

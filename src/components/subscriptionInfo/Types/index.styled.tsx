@@ -28,8 +28,6 @@ const List = styled.div`
   ${Text}:last-child {
     margin-bottom: 0px;
   }
-
-}
 `
 
 export { BoxWrapper, Box, List }

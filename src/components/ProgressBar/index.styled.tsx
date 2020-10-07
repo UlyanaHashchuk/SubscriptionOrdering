@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Container, Text } from '../StyledComponents'
+import { MAX_STEP } from '../../constants/orderSteps'
 
 type Props = {
   $step: number
@@ -29,7 +30,7 @@ const Progress = styled.div`
 
 const ActiveProgress = styled.div.attrs(({ $step }: Props) => ({
   style: {
-    width: $step === 3 ? '100%' : `${$step * 33}%`,
+    width: `${$step * (100 / MAX_STEP)}%`,
   },
 }))<Props>`
   background-color: #61dafb;
@@ -47,11 +48,11 @@ const Label = styled(Container)`
   }
 
   ${Text}:nth-child(2) {
-    transform: translate(-20%);
+    transform: translate(-18%);
   }
 
   ${Text}:nth-child(3) {
-    transform: translate(13%);
+    transform: translate(16%);
   }
 `
 

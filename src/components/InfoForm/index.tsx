@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react'
-import StepContext from '../../StepContext'
+import StepContext from '../../contexts/StepContext'
+import { OrderSteps } from '../../constants/orderSteps'
+import { validateName, validateEmail } from '../../utils/validations'
 import { Text, Wrapper, Button, Emoji } from '../StyledComponents'
-import { Form, Input, Label } from './index.styled'
-
-const nameRegex = /^[a-zA-Z\s-]+$/g
-const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/g
+import InputField from './components/InputField'
+import ErrorMessage from './components/ErrorMessage'
+import { Form } from './index.styled'
 
 export default () => {
   const { setStep, setFormData } = useContext(StepContext)
@@ -17,26 +18,15 @@ export default () => {
   const handleSurnameChange = ({ target: { value } }) => setSurname(value)
   const handleEmailChange = ({ target: { value } }) => setEmail(value)
 
-  const validateInputValue = () => {
-    if (!name.match(nameRegex) || !surname.match(nameRegex)) {
-      setError('wrongFormat')
-
-      return true
-    } else if (!email.match(emailRegex)) {
-      setError('invalidEmail')
-
-      return true
-    }
-
-    return false
-  }
+  const isValidatedInputValue = () =>
+    !validateName(name, surname, setError) && !validateEmail(email, setError)
 
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    if (!validateInputValue()) {
+    if (isValidatedInputValue()) {
       setFormData({ name, surname, email })
-      setStep(3)
+      setStep(OrderSteps.orderSummary)
     }
   }
 
@@ -47,49 +37,24 @@ export default () => {
       </Text>
       <Form onSubmit={handleSubmit}>
         <div>
-          <Label>
-            <Text>Name: </Text>
-            <Input
-              type="text"
-              value={name}
-              onChange={handleNameChange}
-              required
-            />
-          </Label>
-          <Label>
-            <Text>Surname: </Text>
-            <Input
-              type="text"
-              value={surname}
-              onChange={handleSurnameChange}
-              required
-            />
-          </Label>
-          <Label>
-            <Text>Email: </Text>
-            <Input
-              type="text"
-              value={email}
-              onChange={handleEmailChange}
-              required
-            />
-          </Label>
+          <InputField title="Name:" value={name} onChange={handleNameChange} />
+          <InputField
+            title="Surname:"
+            value={surname}
+            onChange={handleSurnameChange}
+          />
+          <InputField
+            title="Email:"
+            value={email}
+            onChange={handleEmailChange}
+          />
         </div>
-        {error === 'wrongFormat' && (
-          <Text centered small>
-            Wrong Name/Surname Format: Only [A-z|-] permitted
-          </Text>
-        )}
-        {error === 'invalidEmail' && (
-          <Text centered small>
-            You have entered an invalid email address
-          </Text>
-        )}
+        {error && <ErrorMessage error={error} />}
         <Button type="submit" filled>
           Submit
         </Button>
       </Form>
-      <Button onClick={() => setStep(1)}>
+      <Button onClick={() => setStep(OrderSteps.subscriptionDurationSelect)}>
         <Emoji symbol="🔙" label="back" />
       </Button>
     </Wrapper>

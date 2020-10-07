@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
-import StepContext from '../../StepContext'
+import StepContext from '../../contexts/StepContext'
+import { OrderSteps } from '../../constants/orderSteps'
 import WelcomeScreen from '../WelcomeScreen'
 import SubscriptionTypes from '../subscriptionInfo/Types'
 import SubscriptionLength from '../subscriptionInfo/Length'
@@ -10,13 +11,13 @@ export default () => {
   const { step } = useContext(StepContext)
 
   switch (step) {
-    case 0:
+    case OrderSteps.subscriptionTypeSelect:
       return <SubscriptionTypes />
-    case 1:
+    case OrderSteps.subscriptionDurationSelect:
       return <SubscriptionLength />
-    case 2:
+    case OrderSteps.userInfoForm:
       return <InfoForm />
-    case 3:
+    case OrderSteps.orderSummary:
       return <Summary />
     default:
       return <WelcomeScreen />

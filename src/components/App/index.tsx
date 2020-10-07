@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import StepContext from '../../StepContext'
+import StepContext from '../../contexts/StepContext'
 import GlobalStyle from './index.styled'
 import ProgressBar from '../ProgressBar'
 import OrderSteps from '../OrderSteps'
@@ -14,19 +14,19 @@ export default () => {
   })
   const [formData, setFormData] = useState({ name: '', surname: '', email: '' })
 
+  const contex = {
+    step,
+    setStep,
+    subscriptionData,
+    setSubscriptionData,
+    formData,
+    setFormData,
+  }
+
   return (
     <>
       <GlobalStyle />
-      <StepContext.Provider
-        value={{
-          step,
-          setStep,
-          subscriptionData,
-          setSubscriptionData,
-          formData,
-          setFormData,
-        }}
-      >
+      <StepContext.Provider value={contex}>
         {step !== null && <ProgressBar step={step} />}
         <OrderSteps />
       </StepContext.Provider>

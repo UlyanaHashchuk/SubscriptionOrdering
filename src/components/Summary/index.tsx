@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
-import StepContext from '../../StepContext'
+import StepContext from '../../contexts/StepContext'
+import { OrderSteps } from '../../constants/orderSteps'
 import { Text, Wrapper, Emoji } from '../StyledComponents'
 import { SummaryBox, StyledButton } from './index.styled'
 
@@ -33,7 +34,9 @@ export default () => {
           <Emoji symbol="💸" label="dollar" />
         </Text>
       </SummaryBox>
-      <StyledButton onClick={() => setStep(0)}>Choose again</StyledButton>
+      <StyledButton onClick={() => setStep(OrderSteps.subscriptionTypeSelect)}>
+        Choose again
+      </StyledButton>
     </Wrapper>
   )
 }

@@ -15,11 +15,11 @@ type Form = {
 
 type ContextProps = {
   step: any
-  setStep: React.Dispatch<React.SetStateAction<number>>
+  setStep: (step: number) => void
   subscriptionData: Subscription
-  setSubscriptionData: React.Dispatch<React.SetStateAction<Object>>
+  setSubscriptionData: (props) => void
   formData: Form
-  setFormData: React.Dispatch<React.SetStateAction<Object>>
+  setFormData: (props) => void
 }
 
 export default React.createContext<Partial<ContextProps>>({

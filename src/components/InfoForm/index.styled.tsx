@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-const displayColumn = () => css`
+const displayColumn = css`
   display: flex;
   flex-direction: column;
 `
