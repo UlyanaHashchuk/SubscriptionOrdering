@@ -32,7 +32,9 @@ P.S. There is no credit card details as it is prototype. In real `proceed to pay
 
 ## How to start?
 
-1. Install dependencies:
+1. Delete `yarn.lock` file
+
+2. Install dependencies:
 
 ```sh
 yarn
