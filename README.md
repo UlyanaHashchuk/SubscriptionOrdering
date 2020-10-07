@@ -35,7 +35,7 @@ P.S. There is no credit card details as it is prototype. In real `proceed to pay
 1. Install dependencies:
 
 ```sh
-  yarn
+yarn
 ```
 
 2. Run application
